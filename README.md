@@ -9,7 +9,9 @@ image using the secure boot key in fuses, or a zeroed key in the case of develop
 Tested on T114/T124/T210
 
 #### Dependencies:
+```
 libssl-dev
+```
 
 #### Building:
 ```
