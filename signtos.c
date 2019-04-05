@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
 	err = fread(hdr, 1, HDR_LEN, inf);
 	if (err != HDR_LEN) {
 		printf("Failed to read header into buffer\n");
-		fclose(inf);
 		err = -ENOMEM;
 		goto out;
 	}
@@ -72,7 +71,6 @@ int main(int argc, char *argv[])
 	message = malloc(sizeof(unsigned char)*(size));
 	if (!message) {
 		printf("Failed to allocate image buffer\n");
-		fclose(inf);
 		err = -ENOMEM;
 		goto out;
 	}
@@ -81,7 +79,6 @@ int main(int argc, char *argv[])
 	output = malloc(sizeof(unsigned char)*(size + SIG_LEN));
 	if (!output) {
 		printf("Failed to allocate output buffer\n");
-		fclose(inf);
 		err = -ENOMEM;
 		goto out;
 	}
@@ -90,7 +87,6 @@ int main(int argc, char *argv[])
 	err = fread(message, 1, size, inf);;
 	if (err != size) {
 		printf("Failed to read file into buffer\n");
-		fclose(inf);
 		err = -ENOMEM;
 		goto out;
 	}
@@ -138,7 +134,6 @@ int main(int argc, char *argv[])
 
 	if (!fwrite(output, 1, (size + SIG_LEN), inf)) {
 		printf("Failed to write file\n");
-		fclose(inf);
 		err = -EINVAL;
 		goto out;
 	}
