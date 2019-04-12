@@ -6,6 +6,8 @@ is needed is to supply a TOS image as an argument. Any trailing garbage/data wil
 and the image signed, verified by the code length in the header. Nvidia uses AES-CMAC to sign the
 image using the secure boot key in fuses, or a zeroed key in the case of development/unfused devices.
 
+This does not work on PKC-fused devices.
+
 Tested on T114/T124/T210
 
 #### Dependencies:
